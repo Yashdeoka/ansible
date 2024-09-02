@@ -1,0 +1,15 @@
+---
+- name: Patch server
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Upgrade and update packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Restart/Reboot server
+      reboot:
+        msg: "Server under patching activity maintenance"
+      when: ansible_distribution == "Ubuntu"
+~                                                                           ~                                                                           ~                                    
