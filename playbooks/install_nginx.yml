@@ -1,0 +1,16 @@
+---
+- name: Install Nginx & make sure it's enabled
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Start & Enable NGINX
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+  
