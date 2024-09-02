@@ -1,0 +1,17 @@
+---
+# tasks file for nginx
+- name: Install NGINX
+  apt:
+    name: nginx
+    state: present
+
+- name: Enable and Start NGINX
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Deploy Webpage
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
